@@ -14,7 +14,7 @@ class CircleButton extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  memoAddButton: {
+  circleButton: {
     position: 'absolute',
     bottom: 32,
     right: 32,
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3,
   },
   // viewにフォントのスタイルは使えない。
-  memoAddButtonTitle: {
+  circleButtonTitle: {
     fontSize: 32,
     lineHeight: 32,
     color: 'white',
