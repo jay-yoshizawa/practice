@@ -1,7 +1,22 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import * as Font from 'expo-font';
+import fontAwsome from '../../assets/fonts/fa-solid-900.ttf';
 
 class CircleButton extends React.Component {
+  // FontAwsome
+  state = {
+    fontLoaded: false,
+  }
+
+  async componentDidMount() {
+    await Font.loadAsync({
+      FontAwsome: fontAwsome,
+    });
+
+    this.setState({ fontLoaded: true });
+  }
+
   render() {
     // 定義しているstyleに適応することができる
     const { style, color } = this.props;
@@ -17,9 +32,14 @@ class CircleButton extends React.Component {
     return (
       // 配列にすることでデフォルト指定してそのあと上書き
       <View style={[styles.circleButton, style, { backgroundColor: bgColor }]}>
-        <Text style={[styles.circleButtonTitle, { color: textColor }]}>
-          {this.props.children}
-        </Text>
+        {
+        this.state.fontLoaded ? (
+          <Text style={[styles.circleButtonTitle, { color: textColor }]}>
+            {this.props.children}
+          </Text>
+        ) : null
+
+      }
       </View>
     );
   }
@@ -32,7 +52,6 @@ const styles = StyleSheet.create({
     right: 32,
     width: 48,
     height: 48,
-    backgroundColor: '#E31676',
     // 丸みを帯びる、widthのはんぶんにするとなる。
     borderRadius: 24,
     justifyContent: 'center',
@@ -44,9 +63,10 @@ const styles = StyleSheet.create({
   },
   // viewにフォントのスタイルは使えない。
   circleButtonTitle: {
-    fontSize: 32,
+    fontSize: 24,
     lineHeight: 32,
     color: 'white',
+    fontFamily: 'FontAwsome',
   },
 });
 
