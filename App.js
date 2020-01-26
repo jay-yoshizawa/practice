@@ -10,21 +10,24 @@ import LoginScreen from './src/screens/LoginScreen';
 import SignupScreen from './src/screens/SignupScreen';
 
 const RootStack = createStackNavigator({
+  Login:      { screen: LoginScreen },
+  Signup:     { screen: SignupScreen },
   Home:       { screen: MemoListScreen },
   MemoDetail: { screen: MemoDetailScreen },
   MemoEdit:   { screen: MemoEditScreen },
-  Login:      { screen: LoginScreen },
-  Signup:     { screen: SignupScreen },
 }, {
   // defaultに設定した。
-  navigationOptions: {
+  defaultNavigationOptions: {
     headerTitle: 'Memot',
+    headerTintColor: '#fff',
+    headerBackTitle: null,
     headerStyle: {
       backgroundColor: '#265366',
     },
     headerTitleStyle: {
       color: '#fff',
     },
+
   },
 });
 
